@@ -22,13 +22,17 @@ namespace LMS.Data
 
         public async Task SeedDataAsync()
         {
-            // await SeedCategoriesAsync();
+            await SeedCategoriesAsync();
             await SeedUsersAsync();
             await SeedBooksAsync();
         }
 
         private async Task SeedCategoriesAsync()
         {
+            if ((await _categoryService.GetAllAsync()).Items.Count > 0)
+            {
+                return; // Categories already exist, no need to seed
+            }
             var categories = new List<CategoryCreatDto>
             {
                 new CategoryCreatDto { Name = "Fiction", Description = "Literary works created from imagination" },
@@ -46,8 +50,6 @@ namespace LMS.Data
 
         private async Task SeedUsersAsync()
         {
-
-
             // Create admin user
             var adminUser = new RegisterRequest
             {
@@ -74,6 +76,10 @@ namespace LMS.Data
 
         private async Task SeedBooksAsync()
         {
+            if((await _bookService.GetAllBookAsync()).Items.Count > 0)
+            {
+                return; // Books already exist, no need to seed
+            }
 
             var categories = await _categoryService.GetAllAsync();
             var categoryDict = categories.Items.ToDictionary(c => c.Name, c => c.Id);

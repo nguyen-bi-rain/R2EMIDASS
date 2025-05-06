@@ -70,6 +70,7 @@ const ListBook = () => {
         try {
             await bookService.deleteBook(id);
             toast.success("Book deleted successfully!");
+            window.location.reload(); 
 
         } catch (error: any) {
             console.error("Error deleting book:", error);

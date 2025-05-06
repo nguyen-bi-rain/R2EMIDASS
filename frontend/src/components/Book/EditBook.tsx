@@ -33,7 +33,7 @@ const EditBook = () => {
     });
 
     const onSubmit = async (data: BookType) => {
-        console.log('Form data:', data);    
+        console.log('Form data:', data);
         setIsSaving(true);
         try {
             await bookService.updateBook(id, { ...data, categoryId: selectedCategory as number, available: defaultValues.available });
@@ -95,9 +95,8 @@ const EditBook = () => {
 
     if (isLoading) {
         return (
-            <div className="flex justify-center items-center h-screen">
-                <Spinner />
-            </div>
+
+            <Spinner />
         );
     }
 

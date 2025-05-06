@@ -31,7 +31,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString);
 });
 builder.Services.AddAuthenticationService(builder.Configuration);
-// builder.Services.AddDataSeeder();
+builder.Services.AddDataSeeder();
 
 // Later, after building the app, seed the data
 var app = builder.Build();
@@ -41,9 +41,9 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    // await app.Services.SeedData();
 }
 // Register the data seeder service
-// await app.Services.SeedData();
 
 app.UseMiddleware<ExceptionHandlingMiddleware>();
 

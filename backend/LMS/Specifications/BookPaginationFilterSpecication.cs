@@ -8,7 +8,7 @@ namespace LMS.Specifications
         {
             if (!string.IsNullOrEmpty(searchTerm))
             {
-                Criteria = b => b.Title.ToLower().Contains(searchTerm.ToLower()) || b.Author.ToLower().Contains(searchTerm.ToLower());
+                Criteria = b => b.Title.ToLower().Contains(searchTerm.ToLower());
             }
             if(categoryId > 0){
                 Criteria = b => b.CategoryId == categoryId;
