@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Borrow Notification</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            margin: 0;
+            color: #4CAF50;
+        }
+        .content {
+            margin-bottom: 20px;
+        }
+        .footer {
+            text-align: center;
+            font-size: 0.9em;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Library Management System</h1>
+        </div>
+        <div class="content">
+            <p>Dear <strong>{{UserName}}</strong>,</p>
+            <p>We are writing to inform you about the status of your book borrow request:</p>
+            <p><strong>Request Id:</strong> {{Id}}</p>
+            <p><strong>DateRequest</strong> {{DateRequest}}</p>
+            
+            <p><strong>Status:</strong> <span style="color: {{StatusColor}};">{{ApprovalStatus}}</span></p>
+            <p>{{CustomMessage}}</p>
+            <p>You can check it <a href="http://localhost:5173/admin/book-borrowed">here</a></p>
+        </div>
+        <div class="footer">
+            <p>Thank you for using our library services.</p>
+            <p>If you have any questions, feel free to contact us.</p>
+        </div>
+    </div>
+</body>
+</html>
